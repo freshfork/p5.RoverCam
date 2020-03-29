@@ -64,3 +64,4 @@ class Player extends RoverCam {
 
 Example:
 - [MazeRunner on openprocessing](https://www.openprocessing.org/sketch/755273)
+- [MazeRunner on editor.p5js.org](https://editor.p5js.org/jwdunn1/sketches/Xst_YZq1V)
