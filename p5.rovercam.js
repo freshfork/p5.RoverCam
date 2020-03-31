@@ -2,7 +2,7 @@
  * 
  * The p5.RoverCam library - First-Person 3D CameraControl for p5.js and WEBGL.
  *
- *   Copyright © 2019 by p5.RoverCam authors
+ *   Copyright Â© 2020 by p5.RoverCam authors
  *
  *   Source: https://github.com/freshfork/p5.RoverCam
  *
@@ -26,10 +26,16 @@
 //       w/s : forward/backward
 //       e/q : up/down
 
+// First, define a callback system
+// a location to store the class instances
+var __RoverCam_cbq = [];
+
+// let p5 know that we want a callback at the end of the draw loop.
+// we iteratively call each item in the queue with its own context
+p5.prototype.registerMethod('post', ()=>{for(let i of __RoverCam_cbq)i.draw.call(i)});
 
 class RoverCam {
   constructor(){
-    registerMethod('post', () => this.draw() );
     this.speed = 3.0;
     this.sensitivity = 2.0;
     this.position = createVector(0, 0, 0);
@@ -41,6 +47,8 @@ class RoverCam {
     this.tilt = 0.0;
     this.friction = 0.75;
     perspective(PI/3, width/height, 0.01, 1000.0);
+    // push 'this' onto a callback queue
+    __RoverCam_cbq.push(this);
   }
   draw(){
     this.pan += map(mouseX - pmouseX, 0, width, 0, TWO_PI) * this.sensitivity;
