@@ -1,7 +1,7 @@
 ## p5.RoverCam
 A super-simple first-person perspective camera library for p5.js in WEBGL mode.
 
-The position and orientation of an instance of RoverCam can be controlled using the mouse and WASD keys (as well as E and Q for upward and downward motion).
+The position and orientation of an instance of RoverCam can be controlled using the mouse and WASD / Arrow keys (as well as E and Q for upward and downward motion).
 
 Source forked from github.com/jrc03c/queasycam and ported to JavaScript.
 
@@ -24,6 +24,7 @@ function draw() {
 ```
 
 After creating the camera, it can be controlled using the mouse or the keyboard with the following:
+
 ```
 Mouse:
        left/right : pan
@@ -33,6 +34,9 @@ Mouse:
  Keys: a/d : left/right
        w/s : forward/backward
        e/q : up/down
+       ←/→ : left/right
+       ↑/↓ : forward/backward
+
 ```
 
 RoverCam can be extended:
