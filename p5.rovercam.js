@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * The p5.RoverCam library - First-Person 3D CameraControl for p5.js and WEBGL.
  *
  *   Copyright © 2020 by p5.RoverCam authors
@@ -7,13 +7,13 @@
  *   Source: https://github.com/freshfork/p5.RoverCam
  *
  *   MIT License: https://opensource.org/licenses/MIT
- * 
- * 
+ *
+ *
  * explanatory note:
- * 
+ *
  * p5.RoverCam is a derivative of the QueasyCam Library by Josh Castle,
  * ported to JavaScript for p5.js from github.com/jrc03c/queasycam
- * 
+ *
  */
 
 // First-person camera control
@@ -46,11 +46,18 @@ class RoverCam {
     this.pan = 0.0;
     this.tilt = 0.0;
     this.friction = 0.75;
-    perspective(PI/3, width/height, 0.01, 1000.0);
+    this.width = 0;
+    this.height = 0;
     // push 'this' onto a callback queue
     __RoverCam_cbq.push(this);
   }
   draw(){
+    if(width !== this.width || height !== this.height){
+        perspective(PI/3, width/height, 0.01, 1000.0);
+        this.width = width;
+        this.height = height;
+    }
+
     this.pan += map(mouseX - pmouseX, 0, width, 0, TWO_PI) * this.sensitivity;
     this.tilt += map(mouseY - pmouseY, 0, height, 0, PI) * this.sensitivity;
     this.tilt = this.clamp(this.tilt, -PI/2.01, PI/2.01);
