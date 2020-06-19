@@ -67,12 +67,12 @@ class RoverCam {
     this.forward = createVector(cos(this.pan), tan(this.tilt), sin(this.pan));
     this.forward.normalize();
     this.right = createVector(cos(this.pan - PI/2.0), 0, sin(this.pan - PI/2.0));
-    if(keyIsPressed && key == 'a') this.velocity.add(p5.Vector.mult(this.right, this.speed));
-    if(keyIsPressed && key == 'd') this.velocity.sub(p5.Vector.mult(this.right, this.speed));
-    if(keyIsPressed && key == 'w') this.velocity.add(p5.Vector.mult(this.forward, this.speed));
-    if(keyIsPressed && key == 's') this.velocity.sub(p5.Vector.mult(this.forward, this.speed));
-    if(keyIsPressed && key == 'q') this.velocity.add(p5.Vector.mult(this.up, this.speed));
-    if(keyIsPressed && key == 'e') this.velocity.sub(p5.Vector.mult(this.up, this.speed));
+    if(keyIsDown(65) || keyIsDown(LEFT_ARROW)) this.velocity.add(p5.Vector.mult(this.right, this.speed)); // a
+    if(keyIsDown(68) || keyIsDown(RIGHT_ARROW)) this.velocity.sub(p5.Vector.mult(this.right, this.speed)); // d
+    if(keyIsDown(87) || keyIsDown(UP_ARROW)) this.velocity.add(p5.Vector.mult(this.forward, this.speed)); // w
+    if(keyIsDown(83) || keyIsDown(DOWN_ARROW)) this.velocity.sub(p5.Vector.mult(this.forward, this.speed)); // s
+    if(keyIsDown(81)) this.velocity.add(p5.Vector.mult(this.up, this.speed)); // q
+    if(keyIsDown(69)) this.velocity.sub(p5.Vector.mult(this.up, this.speed)); // e
     if(mouseIsPressed) this.velocity.add(p5.Vector.mult(this.forward, this.speed));
 
     this.velocity.mult(this.friction);
