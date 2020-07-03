@@ -18,7 +18,7 @@
  * 20200628 incorporate pointerLock and overridable controller method
  * 20200629 add support for switching between multiple cameras
  * 20200701 v1.1.0 fix registerMethod and allow for p5js instance mode
- * 20200702 v1.1.1 moved pointerLock; added keymap and occular offsetting
+ * 20200702 v1.1.1 moved pointerLock; added keymap and ocular offsetting
  */
 
 // First-person camera control
