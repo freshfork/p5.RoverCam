@@ -5,6 +5,10 @@ RoverCam supports p5.js global and multi-instance modes.
 
 The position and orientation of an instance of RoverCam can be controlled using the mouse and WASD / Arrow keys (as well as E and Q for upward and downward motion).
 
+### Release path
+
+- [CDN: p5.rovercam.min.js](https://cdn.jsdelivr.net/gh/freshfork/p5.RoverCam@1.1.1/p5.rovercam.min.js)
+
 ### Usage
 
 ```javascript
