@@ -16,7 +16,7 @@ var rover;
 
 function setup() {
   createCanvas(800, 800, WEBGL);
-  rover = new RoverCam();
+  rover = createRoverCam();
   rover.usePointerLock();    // optional; default is keyboard control only
   rover.setState({           // optional
     position: [-400,-200,-200],
@@ -140,7 +140,7 @@ var rover;
 
 function setup() {
   createCanvas(800, 800, WEBGL);
-  rover = new RoverCam();
+  rover = createRoverCam();
   rover.keyMap.mx1 = [75, 38];  // k, UP_ARROW
   rover.keyMap.mx2 = [74, 40];  // j, DOWN_ARROW
   rover.keyMap.my1 = [72, 37];  // h, LEFT_ARROW
