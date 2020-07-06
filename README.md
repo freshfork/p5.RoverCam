@@ -59,19 +59,23 @@ Mouse: click : toggle pointer lock
 - [Multi-instance](https://editor.p5js.org/jwdunn1/sketches/QzBAQZPVT)
 - [Stereo vision](https://editor.p5js.org/jwdunn1/sketches/nxfEMXn-s)
 - [Controller](https://editor.p5js.org/jwdunn1/sketches/3IaJbTnkd)
+- [Stereo MazeRunner](https://editor.p5js.org/jwdunn1/present/q24UkWcZe)
 
 ### Utility methods
 
-Mouse pointer lock can be enabled by invoking the `usePointerLock()` method. Pointer lock is global for all instances, thus only one instance needs to set this. See the multi-instance and stereo vision examples above.
+Mouse pointer lock can be enabled by invoking the `usePointerLock()` method. Pointer lock is global for all instances, thus only one instance needs to set this. See the _Multi-instance_ and _Stereo vision_ examples above.
 
 ```javascript
 rover.usePointerLock();
+```
 
-// if using p5.js instance mode, pass the instance variable
+Note: If using p5.js instance mode, pass the instance variable (see the _Stereo MazeRunner_ example above).
+
+```javascript
 rover.usePointerLock(p);
 ```
 
-The camera can be reset to initialization values with the `reset()` method.
+The camera can be reset to initialization values with the `reset()` method. Note, this will override any state set by the `setState()` method.
 
 ```javascript
 rover.reset();
@@ -92,13 +96,13 @@ rover.setState = {
 };
 ```
 
-Camera controls can be enabled or disabled by setting the boolean `enableControl` property. This is useful to switch camera controls in a multi-instance scenario. The camera view remains visible. See the multi-instance example above. By default, a camera's controls are enabled.
+Camera controls can be enabled or disabled by setting the boolean `enableControl` property. This is useful to switch camera controls in a multi-instance scenario. The camera view remains visible. See the _Multi-instance_ example above. By default, a camera's controls are enabled. In other scenarios like the _Stereo vision_ example, the two camera controls remain enabled for simultaneous control of the view.
 
 ```javascript
 rover.enableControl = true;
 ```
 
-A camera view can be enabled or disabled with the `setActive()` method. It requires one boolean argument. When disabled, the camera is no longer updated or visible. Another view can take its place. See the multi-camera example above. By default, a camera's view is enabled.
+A camera view can be enabled or disabled with the `setActive()` method. It requires one boolean argument. When disabled, the camera is no longer updated or visible. Another view can take its place. See the _Multi-camera_ example above. By default, a camera's view is enabled.
 
 ```javascript
 rover.setActive(true);
@@ -106,7 +110,7 @@ rover.setActive(true);
 
 ### Customization
 
-The RoverCam class can be extended. See the MazeRunner example above.
+The RoverCam class can be extended. See the _MazeRunner_ and _Stereo MazeRunner_ examples above.
 
 ```javascript
 class Player extends RoverCam {
@@ -132,6 +136,17 @@ class Player extends RoverCam {
   }
 }
 ```
+Note: In multi-instance uses, pass the instance variable into the extended constructor and then on to the `super()`.
+
+```javascript
+class Player extends RoverCam {
+  constructor(p){
+    super(p);
+  }
+}
+```
+
+---
 
 The keyboard can be remapped. The following example replaces the `w,a,s,d` primary movement keys to `k,j,l,h`
 
@@ -148,8 +163,9 @@ function setup() {
 }
 ```
 
+---
 
-The controller method can be customized. It must call on the primitive translation and rotation methods to move the camera. See the controller example above.
+The controller method can be customized. It must call on the primitive translation and rotation methods to move the camera. See the _Controller_ example above.
 
 ```javascript
 
